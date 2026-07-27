@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ستة أشهر معكِ</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top, #241b16 0%, #0e0b0a 45%, #050505 100%);
+      color: #f7f0e7;
+      font-family: Georgia, "Times New Roman", serif;
+      overflow-x: hidden;
+    }
+
+    /* النجوم */
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: #f4d39b;
+      opacity: 0.5;
+      animation: twinkle 3s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from {
+        opacity: 0.15;
+        transform: scale(0.7);
+      }
+
+      to {
+        opacity: 0.9;
+        transform: scale(1.4);
+      }
+    }
+
+    section {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      padding: 40px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .screen {
+      width: min(800px, 100%);
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    .screen.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .small-label {
+      color: #d5b06f;
+      font-size: 13px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(54px, 14vw, 120px);
+      font-weight: 400;
+      letter-spacing: 8px;
+      color: #efd29b;
+      text-shadow: 0 0 35px rgba(239, 210, 155, 0.25);
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 7vw, 58px);
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 25px;
+    }
+
+    p {
+      max-width: 680px;
+      margin: auto;
+      font-family: Arial, sans-serif;
+      font-size: clamp(17px, 4.5vw, 23px);
+      line-height: 2;
+      color: #ddd3c6;
+    }
+
+    .date {
+      font-family: Arial, sans-serif;
+      letter-spacing: 3px;
+      color: #bba98e;
+      margin-bottom: 40px;
+    }
+
+    .gold-line {
+      width: 85px;
+      height: 1px;
+      margin: 28px auto;
+      background: linear-gradient(to right, transparent, #d5b06f, transparent);
+    }
+
+    button {
+      border: 1px solid #d5b06f;
+      border-radius: 100px;
+      padding: 15px 38px;
+      margin-top: 38px;
+      color: #f1d6a2;
+      background: rgba(213, 176, 111, 0.05);
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.35s ease;
+    }
+
+    button:hover {
+      color: #0b0908;
+      background: #d5b06f;
+      box-shadow: 0 0 30px rgba(213, 176, 111, 0.35);
+    }
+
+    .number {
+      font-size: 95px;
+      color: rgba(213, 176, 111, 0.12);
+      margin-bottom: -35px;
+    }
+
+    .final-title {
+      color: #efd29b;
+    }
+
+    .heart {
+      display: block;
+      margin-top: 30px;
+      color: #d5b06f;
+      font-size: 30px;
+      animation: heartbeat 1.8s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    .hint {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #887c6b;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      animation: float 1.8s infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(-50%, 0);
+      }
+
+      50% {
+        transform: translate(-50%, 8px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="stars" id="stars"></div>
+
+  <section id="home">
+    <div class="screen visible">
+      <div class="small-label">A private story</div>
+
+      <h1>6</h1>
+
+      <h2>ستة أشهر معكِ</h2>
+
+      <div class="gold-line"></div>
+
+      <div class="date">27 JANUARY — 27 JULY</div>
+
+      <p>
+        هناك أشخاص يدخلون حياتنا بهدوء،
+        ثم يصبح وجودهم أجمل جزء فيها.
+      </p>
+
+      <button onclick="goToNext()">ابدئي الرحلة</button>
+    </div>
+
+    <div class="hint">مرّري للأسفل</div>
+  </section>
+
+  <section>
+    <div class="screen">
+      <div class="number">01</div>
+
+      <h2>البداية</h2>
+
+      <div class="gold-line"></div>
+
+      <p>
+        قبل ستة أشهر بدأت حكاية لم أكن أعرف
+        كم ستصبح غالية على قلبي.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="screen">
+      <div class="number">02</div>
+
+      <h2>التفاصيل الصغيرة</h2>
+
+      <div class="gold-line"></div>
+
+      <p>
+        لم أحب اللحظات الكبيرة فقط،
+        بل أحببت كلامنا العادي، ضحكتكِ،
+        وتلك التفاصيل التي جعلت أيامي أجمل.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="screen">
+      <div class="number">03</div>
+
+      <h2>وجودكِ</h2>
+
+      <div class="gold-line"></div>
+
+      <p>
+        أصبح وجودكِ جزءًا من يومي،
+        وأصبح صوتكِ مكانًا أعود إليه
+        مهما كان يومي متعبًا.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="screen">
+      <div class="number">04</div>
+
+      <h2>حتى في الأيام الصعبة</h2>
+
+      <div class="gold-line"></div>
+
+      <p>
+        لم تكن كل أيامنا سهلة،
+        لكن كل شيء مررنا به جعلني أعرف
+        أن علاقتنا تستحق أن أحافظ عليها.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="screen">
+      <div class="number">05</div>
+
+      <h2>شكرًا لكِ</h2>
+
+      <div class="gold-line"></div>
+
+      <p>
+        شكرًا لأنكِ كنتِ هنا،
+        لأنكِ منحتِني الكثير من اللحظات الجميلة،
+        ولأنكِ أصبحتِ شخصًا لا يشبه أحدًا.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="screen">
+      <div class="number">06</div>
+
+      <h2>ستة أشهر</h2>
+
+      <div class="gold-line"></div>
+
+      <p>
+        ستة أشهر من الكلام والضحك،
+        من الخلاف والصلح، من الذكريات والمشاعر...
+        وستة أشهر جعلتني أتمسك بكِ أكثر.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="screen">
+      <div class="small-label">This is only the beginning</div>
+
+      <h2 class="final-title">كل شهر وإنتِ أجمل شخص بحياتي</h2>
+
+      <div class="gold-line"></div>
+
+      <p>
+        المسافة قد تمنعني من رؤيتكِ الليلة،
+        لكنها لا تمنعني من أن أصنع لكِ شيئًا
+        يعبّر عن مكانتكِ في قلبي.
+        <br><br>
+        أتمنى أن تكون الأشهر القادمة أجمل،
+        وأن نكتب بقية حكايتنا معًا.
+      </p>
+
+      <span class="heart">♡</span>
+    </div>
+  </section>
+
+  <script>
+    function goToNext() {
+      document.querySelectorAll("section")[1].scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    const screens = document.querySelectorAll(".screen");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.3
+    });
+
+    screens.forEach((screen) => {
+      observer.observe(screen);
+    });
+
+    const starsContainer = document.getElementById("stars");
+
+    for (let i = 0; i < 90; i++) {
+      const star = document.createElement("span");
+      star.className = "star";
+      star.style.left = Math.random() * 100 + "%";
+      star.style.top = Math.random() * 100 + "%";
+      star.style.animationDelay = Math.random() * 3 + "s";
+      star.style.animationDuration = (2 + Math.random() * 3) + "s";
+      starsContainer.appendChild(star);
+    }
+  </script>
+
+</body>
+</html>
